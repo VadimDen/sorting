@@ -55,24 +55,23 @@ const insertionSort = arr => {
 
 };
 function shellSort(arr) {
-	let n = arr.length;
+    let n = arr.length;
 
-	for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))	{
-		time2++;
+    for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))	{
+    time2++;
 
     for (let i = gap; i < n; i += 1)  {
-			time3++;
-      
-      let temp = arr[i];
+        time3++;
+        let temp = arr[i];
 			
-			let j;
-			for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)  {
-				arr[j] = arr[j-gap];
-			}
-
-			arr[j] = temp;
-		}
+	let j;
+	for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)  {
+	    arr[j] = arr[j-gap];
 	}
+
+	arr[j] = temp;
+        }
+    }
 
 	resultDiv2.textContent = 'shellSort completed. Using ' + (time2 + time3) + ' steps!';
   return arr;
