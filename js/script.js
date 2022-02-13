@@ -18,7 +18,7 @@ function mili() {
 }
 
 let numCheck = (elem) => {
-  if (isNaN(elem) == false && elem !== '' && elem <= 0) {
+  if (isNaN(elem) == false && elem !== '') {
     console.log(elem + ' Good!');
     check = 1;
   } else {
