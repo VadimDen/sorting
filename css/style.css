@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  background-color: rgb(230, 230, 230);
+  border: 5px solid rgb(73, 73, 73);
+  border-radius: 2%;
+  padding: 20px;
+}
+
+.container input {
+  margin-top: 20px;
+}
+
+.container button {
+  width: 50px;
+  margin-left: 20px;
+}
+
+.error {
+  display: none;
+  margin-top: 20px;
+  padding: 5px;
+  border: 2px dotted red;
+  color: red;
+}
+
+.time1,
+.time2 {
+  margin-top: 20px;
+}
