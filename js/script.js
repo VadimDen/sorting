@@ -10,7 +10,6 @@ let check,
     randArr = [],
     time1 = 0,
     time2 = 0,
-    time3 = 0,
     milisec = 0;
 
 function mili() {
@@ -61,25 +60,25 @@ function shellSort(arr) {
     time2++;
 
     for (let i = gap; i < n; i += 1)  {
-        time3++;
+        time2++;
         let temp = arr[i];
 			
 	let j;
 	for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)  {
-	    arr[j] = arr[j-gap];
+	    time2++;
+            arr[j] = arr[j-gap];
 	}
 
 	arr[j] = temp;
         }
     }
 
-	resultDiv2.textContent = 'shellSort completed. Using ' + (time2 + time3) + ' steps!';
+	resultDiv2.textContent = 'shellSort completed. Using ' + (time2) + ' steps!';
   return arr;
 }
 button.addEventListener('click', event => {
   time1 = 0;
   time2 = 0;
-  time3 = 0;
   const n = document.querySelector('.container_input').value;
   randArr = [];
 
