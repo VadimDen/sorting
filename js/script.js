@@ -8,13 +8,8 @@ const errorDiv = document.querySelector('.error'),
 
 let check,
     randArr = [],
-    time1 = 0,
-    time2 = 0,
-    milisec = 0;
-
-function mili() {
-  milisec++;
-}
+    startTime,
+    endTime;
 
 let numCheck = (elem) => {
   if (isNaN(elem) == false && elem !== '') {
@@ -32,7 +27,7 @@ function getRandomInt(max) {
 const arrCreate = (elem) => {
   let i = 0;
   while (i <= elem) {
-    randArr.push(getRandomInt(10000));
+    randArr.push(getRandomInt(9999));
     i++;
   }
 }
@@ -41,7 +36,6 @@ const insertionSort = arr => {
   for (let i = 1, l = arr.length; i < l; i++) {
     const current = arr[i];
     let j = i;
-    time1++;
     
     while (j > 0 && arr[j - 1] > current) {
       arr[j] = arr[j - 1];
@@ -57,28 +51,21 @@ function shellSort(arr) {
     let n = arr.length;
 
     for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2))	{
-    time2++;
 
-    for (let i = gap; i < n; i += 1)  {
-        time2++;
+    for (let i = gap; i < n; i++)  {
         let temp = arr[i];
 			
 	let j;
 	for (j = i; j >= gap && arr[j-gap] > temp; j-=gap)  {
-	    time2++;
             arr[j] = arr[j-gap];
 	}
 
 	arr[j] = temp;
         }
     }
-
-	resultDiv2.textContent = 'shellSort completed. Using ' + (time2) + ' steps!';
   return arr;
 }
 button.addEventListener('click', event => {
-  time1 = 0;
-  time2 = 0;
   const n = document.querySelector('.container_input').value;
   randArr = [];
 
@@ -89,7 +76,16 @@ button.addEventListener('click', event => {
     arrCreate(n);
 
     console.log(randArr);
+
+    startTime = performance.now();
     console.log(insertionSort(randArr));
+    endTime = performance.now();
+    resultDiv1.textContent = `InsertionSort completed in ${endTime - startTime} milliseconds`;
+
+    startTime = performance.now();
     console.log(shellSort(randArr));
+    endTime = performance.now();
+    resultDiv2.textContent = `ShellSort completed in ${endTime - startTime} milliseconds`;
+
   }
 })
